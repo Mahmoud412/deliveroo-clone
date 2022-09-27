@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingTop: 20,
+    backgroundColor: "white",
   },
   subcontainer: {
     flex: 1,
