@@ -4,7 +4,7 @@ import React from "react";
 const CategoryCard = ({ imgurl, title }) => {
   return (
     <TouchableOpacity style={styles.container}>
-      <Image source={{ uri: imgurl }} style={{ height: 80, width: 80 }} />
+      <Image source={{ uri: imgurl }} style={{ height: 80, width: 100 }} />
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
   );

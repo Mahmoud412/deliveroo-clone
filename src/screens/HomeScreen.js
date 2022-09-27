@@ -39,21 +39,15 @@ const HomeScreen = () => {
         <Header />
         <SearchBar />
         <Categories />
-        <FeaturedRow
-          id="1"
-          title="featured"
-          discription="paid placements from our partners"
-        />
-        <FeaturedRow
-          id="2"
-          title="Tasty Discounts "
-          discription="paid placements from our partners"
-        />
-        <FeaturedRow
-          id="3"
-          title="Offers near you!"
-          discription="paid placements from our partners"
-        />
+
+        {featuredCategories?.map((category) => (
+          <FeaturedRow
+            key={category._id}
+            id={category._id}
+            title={category.name}
+            discription={category.short_description}
+          />
+        ))}
       </ScrollView>
     </SafeAreaView>
   );

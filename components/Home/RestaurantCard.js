@@ -2,6 +2,7 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { StarIcon } from "react-native-heroicons/solid";
 import { MapPinIcon } from "react-native-heroicons/outline";
+import { urlFor } from "../../src/api/sanity";
 const RestaurantCard = ({
   id,
   imgUrl,
@@ -16,7 +17,7 @@ const RestaurantCard = ({
 }) => {
   return (
     <TouchableOpacity style={styles.overall}>
-      <Image style={styles.image} source={{ uri: imgUrl }} />
+      <Image style={styles.image} source={{ uri: urlFor(imgUrl).url() }} />
       <View style={styles.container}>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.subcontainer}>
@@ -46,8 +47,8 @@ const RestaurantCard = ({
 
 const styles = StyleSheet.create({
   image: {
-    height: 100,
-    width: 250,
+    height: 190,
+    width: "100%",
     borderRadius: 0.125,
     marginTop: 10,
     marginBottom: 10,

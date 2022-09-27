@@ -1,8 +1,17 @@
 import { View, Text, ScrollView, StyleSheet } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CategoryCard from "./CategoryCard";
+import client, { urlFor } from "../../src/api/sanity";
 
 const Categories = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    client.fetch(`*[_type == 'category']`).then((data) => {
+      setCategories(data);
+    });
+  }, []);
+
   return (
     <ScrollView
       contentContainerStyle={{
@@ -12,38 +21,13 @@ const Categories = () => {
       showsHorizontalScrollIndicator={false}
       style={styles.container}
     >
-      <CategoryCard
-        imgurl="https://media-cdn.tripadvisor.com/media/photo-s/18/7f/e0/d7/getlstd-property-photo.jpg"
-        title="testing"
-      />
-      <CategoryCard
-        imgurl="https://media-cdn.tripadvisor.com/media/photo-s/18/7f/e0/d7/getlstd-property-photo.jpg"
-        title="testing"
-      />
-      <CategoryCard
-        imgurl="https://media-cdn.tripadvisor.com/media/photo-s/18/7f/e0/d7/getlstd-property-photo.jpg"
-        title="testing"
-      />
-      <CategoryCard
-        imgurl="https://media-cdn.tripadvisor.com/media/photo-s/18/7f/e0/d7/getlstd-property-photo.jpg"
-        title="testing"
-      />
-      <CategoryCard
-        imgurl="https://media-cdn.tripadvisor.com/media/photo-s/18/7f/e0/d7/getlstd-property-photo.jpg"
-        title="testing"
-      />
-      <CategoryCard
-        imgurl="https://media-cdn.tripadvisor.com/media/photo-s/18/7f/e0/d7/getlstd-property-photo.jpg"
-        title="testing"
-      />
-      <CategoryCard
-        imgurl="https://media-cdn.tripadvisor.com/media/photo-s/18/7f/e0/d7/getlstd-property-photo.jpg"
-        title="testing"
-      />
-      <CategoryCard
-        imgurl="https://media-cdn.tripadvisor.com/media/photo-s/18/7f/e0/d7/getlstd-property-photo.jpg"
-        title="testing"
-      />
+      {categories.map((category) => (
+        <CategoryCard
+          key={category._id}
+          imgurl={urlFor(category.image).url()}
+          title={category.name}
+        />
+      ))}
     </ScrollView>
   );
 };
