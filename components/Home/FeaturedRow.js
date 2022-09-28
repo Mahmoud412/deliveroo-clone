@@ -29,7 +29,7 @@ const FeaturedRow = ({ id, title, discription }) => {
     <View style={{ backgroundColor: "#f3f2f3" }}>
       <View style={styles.container}>
         <Text style={styles.text}>{title}</Text>
-        <ArrowRightIcon color="#00CCBB" />
+        <ArrowRightIcon color="#8cc0aa" />
       </View>
       <Text style={styles.subText}>{discription}</Text>
       <ScrollView

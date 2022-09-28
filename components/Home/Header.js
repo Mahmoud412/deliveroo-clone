@@ -17,7 +17,7 @@ const Header = () => {
           <MaterialCommunityIcons
             name="chevron-down"
             size={25}
-            color="#00CCBB"
+            color="#8cc0aa"
           />
         </Text>
       </View>
@@ -25,7 +25,7 @@ const Header = () => {
         style={{ marginRight: 7 }}
         name="user"
         size={30}
-        color="#00CCBB"
+        color="#8cc0aa"
       />
     </SafeAreaView>
   );

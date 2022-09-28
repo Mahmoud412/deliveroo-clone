@@ -11,9 +11,14 @@ const BasketIcon = () => {
   const items = useSelector(selectbasketItems);
   const navigation = useNavigation();
   const basketTotal = useSelector(selectBasketTotal);
+
+  if (items.length === 0) return null;
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.subcontainer}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("BasketScreen")}
+        style={styles.subcontainer}
+      >
         <Text style={styles.itemsText}>{items.length}</Text>
         <Text style={styles.basket}>View Basket</Text>
         <Text style={styles.total}> ${basketTotal}</Text>
@@ -30,7 +35,7 @@ const styles = StyleSheet.create({
     zIndex: 50,
   },
   subcontainer: {
-    backgroundColor: "#00CCBB",
+    backgroundColor: "#8cc0aa",
 
     marginHorizontal: 20,
 
@@ -43,7 +48,7 @@ const styles = StyleSheet.create({
   itemsText: {
     color: "white",
     fontWeight: "bold",
-    backgroundColor: "#01A296",
+    backgroundColor: "#8cc0aa",
     paddingHorizontal: 8,
     paddingVertical: 7,
   },

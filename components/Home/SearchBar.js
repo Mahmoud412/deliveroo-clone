@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
   iconC: {
     marginRight: 5,
-    color: "#00CCBB",
+    color: "#8cc0aa",
   },
 });
 

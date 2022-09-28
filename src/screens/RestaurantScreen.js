@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { useRoute } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
 import { urlFor } from "../api/sanity";
@@ -18,9 +18,12 @@ import {
 import { MapPinIcon, ChevronRightIcon } from "react-native-heroicons/outline";
 import DishRow from "../../components/RestaurantDetail/DishRow";
 import BasketIcon from "../../components/RestaurantDetail/BasketIcon";
+import { useDispatch } from "react-redux";
+import { setRestaurant } from "../redux/features/restaurantSlice";
 
 const RestaurantScreen = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const {
     params: {
@@ -37,6 +40,22 @@ const RestaurantScreen = () => {
     },
   } = useRoute();
 
+  useEffect(() => {
+    dispatch(
+      setRestaurant({
+        id,
+        imgUrl,
+        title,
+        rating,
+        genre,
+        address,
+        short_description,
+        dishes,
+        long,
+        lat,
+      })
+    );
+  }, [dispatch]);
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
@@ -50,7 +69,7 @@ const RestaurantScreen = () => {
           <Image style={styles.image} source={{ uri: urlFor(imgUrl).url() }} />
 
           <TouchableOpacity onPress={navigation.goBack} style={styles.icon}>
-            <ArrowLeftIcon size={20} height={20} color="#00CCBB" />
+            <ArrowLeftIcon size={20} height={20} color="#8cc0aa" />
           </TouchableOpacity>
         </View>
         <View style={styles.container}>
@@ -85,7 +104,7 @@ const RestaurantScreen = () => {
             <Text style={{ fontWeight: "bold", paddingLeft: 10, flex: 1 }}>
               Have a food Allergy ?
             </Text>
-            <ChevronRightIcon color="#00CCBB" />
+            <ChevronRightIcon color="#8cc0aa" />
           </TouchableOpacity>
         </View>
         <View style={{ paddingBottom: 160 }}>
