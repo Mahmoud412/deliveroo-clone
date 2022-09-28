@@ -17,6 +17,7 @@ import {
 } from "react-native-heroicons/solid";
 import { MapPinIcon, ChevronRightIcon } from "react-native-heroicons/outline";
 import DishRow from "../../components/RestaurantDetail/DishRow";
+import BasketIcon from "../../components/RestaurantDetail/BasketIcon";
 
 const RestaurantScreen = () => {
   const navigation = useNavigation();
@@ -42,63 +43,66 @@ const RestaurantScreen = () => {
     });
   });
   return (
-    <ScrollView>
-      <View style={{ position: "relative" }}>
-        <Image style={styles.image} source={{ uri: urlFor(imgUrl).url() }} />
+    <>
+      <BasketIcon />
+      <ScrollView>
+        <View style={{ position: "relative" }}>
+          <Image style={styles.image} source={{ uri: urlFor(imgUrl).url() }} />
 
-        <TouchableOpacity onPress={navigation.goBack} style={styles.icon}>
-          <ArrowLeftIcon size={20} height={20} color="#00CCBB" />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.container}>
-        <View style={styles.subcontainer}>
-          <Text style={styles.text}>{title}</Text>
-          <View style={styles.description}>
-            <View style={styles.subDescription}>
-              <StarIcon
-                color="green"
-                opacity={0.5}
-                size={20}
-                style={{ right: 10 }}
-              />
-              <Text style={styles.rating}>
-                {rating} .<Text style={styles.genre}>{genre}</Text>
-              </Text>
-            </View>
-            <View style={styles.subDescription}>
-              <MapPinIcon
-                color="gray"
-                opacity={0.5}
-                size={20}
-                style={{ marginLeft: 10 }}
-              />
-              <Text style={styles.location}>Nearby . {address}</Text>
-            </View>
-          </View>
-          <Text style={styles.short_des}>{short_description}</Text>
+          <TouchableOpacity onPress={navigation.goBack} style={styles.icon}>
+            <ArrowLeftIcon size={20} height={20} color="#00CCBB" />
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.question}>
-          <QuestionMarkCircleIcon color="gray" size={20} opacity={0.6} />
-          <Text style={{ fontWeight: "bold", paddingLeft: 10, flex: 1 }}>
-            Have a food Allergy ?
-          </Text>
-          <ChevronRightIcon color="#00CCBB" />
-        </TouchableOpacity>
-      </View>
-      <View>
-        <Text style={styles.textMenu}>Menu</Text>
-        {dishes.map((dish) => (
-          <DishRow
-            key={dish._id}
-            id={dish._id}
-            name={dish.name}
-            description={dish.short_description}
-            price={dish.price}
-            image={dish.image}
-          />
-        ))}
-      </View>
-    </ScrollView>
+        <View style={styles.container}>
+          <View style={styles.subcontainer}>
+            <Text style={styles.text}>{title}</Text>
+            <View style={styles.description}>
+              <View style={styles.subDescription}>
+                <StarIcon
+                  color="green"
+                  opacity={0.5}
+                  size={20}
+                  style={{ right: 10 }}
+                />
+                <Text style={styles.rating}>
+                  {rating} .<Text style={styles.genre}>{genre}</Text>
+                </Text>
+              </View>
+              <View style={styles.subDescription}>
+                <MapPinIcon
+                  color="gray"
+                  opacity={0.5}
+                  size={20}
+                  style={{ marginLeft: 10 }}
+                />
+                <Text style={styles.location}>Nearby . {address}</Text>
+              </View>
+            </View>
+            <Text style={styles.short_des}>{short_description}</Text>
+          </View>
+          <TouchableOpacity style={styles.question}>
+            <QuestionMarkCircleIcon color="gray" size={20} opacity={0.6} />
+            <Text style={{ fontWeight: "bold", paddingLeft: 10, flex: 1 }}>
+              Have a food Allergy ?
+            </Text>
+            <ChevronRightIcon color="#00CCBB" />
+          </TouchableOpacity>
+        </View>
+        <View style={{ paddingBottom: 160 }}>
+          <Text style={styles.textMenu}>Menu</Text>
+          {dishes.map((dish) => (
+            <DishRow
+              key={dish._id}
+              id={dish._id}
+              name={dish.name}
+              description={dish.short_description}
+              price={dish.price}
+              image={dish.image}
+            />
+          ))}
+        </View>
+      </ScrollView>
+    </>
   );
 };
 

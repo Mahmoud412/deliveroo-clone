@@ -43,8 +43,14 @@ const DishRow = ({ id, name, description, price, image }) => {
       {ispressed && (
         <View style={styles.iconContainer}>
           <View style={styles.iconSubContainer}>
-            <TouchableOpacity onPress={removeItemsFromBasket}>
-              <MinusCircleIcon color="#00CCBB" size={40} />
+            <TouchableOpacity
+              disabled={!items.length}
+              onPress={removeItemsFromBasket}
+            >
+              <MinusCircleIcon
+                color={items.length > 0 ? "#00CCBB" : "gray"}
+                size={40}
+              />
             </TouchableOpacity>
             <Text style={{ margin: 10 }}>{items.length}</Text>
             <TouchableOpacity onPress={addItemToBasket}>
