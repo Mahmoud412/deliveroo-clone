@@ -1,21 +1,42 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { urlFor } from "../../src/api/sanity";
-
+import { MinusCircleIcon, PlusCircleIcon } from "react-native-heroicons/solid";
 const DishRow = ({ id, name, description, price, image }) => {
+  const [ispressed, setIspressed] = useState(false);
+
   return (
-    <TouchableOpacity style={styles.container}>
-      <View style={styles.subcontainer}>
-        <View style={{ flex: 1, paddingRight: 2 }}>
-          <Text style={styles.name}>{name}</Text>
-          <Text style={styles.description}>{description}</Text>
-          <Text style={styles.price}> ${price}</Text>
+    <>
+      <TouchableOpacity
+        onPress={() => setIspressed(!ispressed)}
+        style={styles.container}
+      >
+        <View style={styles.subcontainer}>
+          <View style={{ flex: 1, paddingRight: 2 }}>
+            <Text style={styles.name}>{name}</Text>
+            <Text style={styles.description}>{description}</Text>
+            <Text style={styles.price}> ${price}</Text>
+          </View>
+          <View>
+            <Image style={styles.image} source={{ uri: urlFor(image).url() }} />
+          </View>
         </View>
-        <View>
-          <Image style={styles.image} source={{ uri: urlFor(image).url() }} />
+      </TouchableOpacity>
+
+      {ispressed && (
+        <View style={styles.iconContainer}>
+          <View style={styles.iconSubContainer}>
+            <TouchableOpacity>
+              <MinusCircleIcon color="#00CCBB" size={40} />
+            </TouchableOpacity>
+            <Text style={{ margin: 10 }}>0</Text>
+            <TouchableOpacity>
+              <PlusCircleIcon color="#00CCBB" size={40} />
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    </TouchableOpacity>
+      )}
+    </>
   );
 };
 
@@ -50,6 +71,17 @@ const styles = StyleSheet.create({
   },
   subcontainer: {
     flexDirection: "row",
+  },
+  iconContainer: {
+    backgroundColor: "white",
+    paddingLeft: 5,
+    paddingRight: 5,
+  },
+  iconSubContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingBottom: 5,
+    margin: 5,
   },
 });
 
