@@ -24,7 +24,6 @@ const FeaturedRow = ({ id, title, discription }) => {
         setRestaurants(data?.restaurants);
       });
   }, [id]);
-  console.log(restaurants);
   return (
     <View style={{ backgroundColor: "#f3f2f3" }}>
       <View style={styles.container}>
