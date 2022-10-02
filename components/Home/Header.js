@@ -1,9 +1,18 @@
-import { View, Text, Image, StyleSheet, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import { useNavigation } from "@react-navigation/native";
 
 const Header = () => {
+  const naviagtion = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
       <Image
@@ -21,12 +30,14 @@ const Header = () => {
           />
         </Text>
       </View>
-      <FontAwesome5
-        style={{ marginRight: 7 }}
-        name="user"
-        size={30}
-        color="#8cc0aa"
-      />
+      <TouchableOpacity onPress={() => naviagtion.navigate("AccountScreen")}>
+        <FontAwesome5
+          style={{ marginRight: 7 }}
+          name="user"
+          size={30}
+          color="#8cc0aa"
+        />
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -57,7 +68,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     marginHorizontal: 5,
-    
   },
 });
 export default Header;

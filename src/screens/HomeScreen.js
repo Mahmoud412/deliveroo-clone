@@ -6,8 +6,7 @@ import SearchBar from "../../components/Home/SearchBar";
 import Categories from "../../components/Home/Categories";
 import FeaturedRow from "../../components/Home/FeaturedRow";
 import sanityClient from "../api/sanity";
-const HomeScreen = () => {
-  const navigation = useNavigation();
+const HomeScreen = ({ navigation }) => {
   const [featuredCategories, setFeaturedCategories] = useState([]);
 
   useLayoutEffect(() => {
@@ -36,7 +35,7 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={{ backgroundColor: "white" }}>
       <ScrollView>
-        <Header />
+        <Header navigation={navigation} />
         <SearchBar />
         <Categories />
 

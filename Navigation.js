@@ -10,6 +10,7 @@ import BasketScreen from "./src/screens/BasketScreen";
 import PreparingOrderScreen from "./src/screens/PreparingOrderScreen";
 import DeliveryScreen from "./src/screens/DeliveryScreen";
 import AuthScreen from "./src/screens/AuthScreen";
+import AccountScreen from "./src/screens/AccountScreen";
 
 const Stack = createStackNavigator();
 
@@ -39,6 +40,11 @@ export const SignedInStack = () => (
           component={AuthScreen}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="AccountScreen"
+          component={AccountScreen}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </Provider>
   </NavigationContainer>
@@ -52,6 +58,8 @@ export const SignedOutStack = () => (
         component={AuthScreen}
         options={{ headerShown: false }}
       />
+      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="AccountScreen" component={AccountScreen} />
     </Stack.Navigator>
   </NavigationContainer>
 );
