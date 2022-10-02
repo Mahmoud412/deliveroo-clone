@@ -58,8 +58,7 @@ export const SignedOutStack = () => (
         component={AuthScreen}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      <Stack.Screen name="AccountScreen" component={AccountScreen} />
+      {/* <Stack.Screen name="AccountScreen" component={AccountScreen} /> */}
     </Stack.Navigator>
   </NavigationContainer>
 );
