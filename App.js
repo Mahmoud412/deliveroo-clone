@@ -9,33 +9,9 @@ import { store } from "./src/redux/store";
 import BasketScreen from "./src/screens/BasketScreen";
 import PreparingOrderScreen from "./src/screens/PreparingOrderScreen";
 import DeliveryScreen from "./src/screens/DeliveryScreen";
-
-const Stack = createStackNavigator();
+import AuthScreen from "./src/screens/AuthScreen";
+import AuthNavigation from "./AuthNavigation";
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <Provider store={store}>
-        <Stack.Navigator>
-          <Stack.Screen name="HomeScreen" component={HomeScreen} />
-          <Stack.Screen name="RestaurantScreen" component={RestaurantScreen} />
-          <Stack.Screen
-            name="BasketScreen"
-            component={BasketScreen}
-            options={{ presentation: "modal", headerShown: false }}
-          />
-          <Stack.Screen
-            name="PreparingOrderScreen"
-            component={PreparingOrderScreen}
-            options={{ presentation: "fullScreenModal", headerShown: false }}
-          />
-          <Stack.Screen
-            name="Delivery"
-            component={DeliveryScreen}
-            options={{ presentation: "fullScreenModal", headerShown: false }}
-          />
-        </Stack.Navigator>
-      </Provider>
-    </NavigationContainer>
-  );
+  return <AuthNavigation />;
 }

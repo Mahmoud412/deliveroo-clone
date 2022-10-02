@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     marginHorizontal: 5,
+    
   },
 });
 export default Header;
