@@ -11,7 +11,7 @@
 # Libraries and SDKs Used
 - React Native
 - Expo Go 
-- Firebse
+- Firebase
 - Google Maps
 - Sanity Api
 - Redux
